@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Expense Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💰 Income Expense Calculator</h1>
+            <p>Every rupee counts, track them all</p>
+        </div>
+
+        <div class="summary-cards">
+            <div class="summary-card income-card">
+                <h3>Total Income</h3>
+                <div class="amount" id="totalIncome">₹0.00</div>
+                <p>Money earned</p>
+            </div>
+            <div class="summary-card expense-card">
+                <h3>Total Expenses</h3>
+                <div class="amount" id="totalExpenses">₹0.00</div>
+                <p>Money spent</p>
+            </div>
+            <div class="summary-card balance-card" id="balanceCard">
+                <h3>Net Balance</h3>
+                <div class="amount" id="netBalance">₹0.00</div>
+                <p>Current standing</p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="form-section" id="formSection">
+                <h2 id="formTitle">Add New Entry</h2>
+                
+                <div id="editIndicator" class="edit-indicator" style="display: none;">
+                    Editing Entry - Click Cancel to stop editing
+                </div>
+
+                <form id="entryForm">
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" placeholder="Enter description..." required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="amount">Amount (₹)</label>
+                        <input type="number" id="amount" step="0.01" min="0" placeholder="Enter amount..." required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <select id="type" required>
+                            <option value="">Select type...</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <input type="text" id="category" placeholder="e.g., Food, Salary, Transportation...">
+                    </div>
+                    
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary" id="submitBtn">Add Entry</button>
+                        <button type="button" class="btn btn-secondary" onclick="resetForm()">Reset</button>
+                        <button type="button" class="btn btn-secondary" id="cancelEditBtn" onclick="cancelEdit()" style="display: none;">Cancel Edit</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="entries-section">
+                <div class="entries-header">
+                    <h2>Transaction History</h2>
+                    <div class="filter-group">
+                        <label>
+                            <input type="radio" name="filter" value="all" checked>
+                            <span>All</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="filter" value="income">
+                            <span>Income</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="filter" value="expense">
+                            <span>Expenses</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="entries-list" id="entriesList">
+                    <div class="empty-state">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 7h-3V6a4 4 0 0 0-8 0v1H5a1 1 0 0 0-1 1v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a1 1 0 0 0-1-1zM10 6a2 2 0 0 1 4 0v1h-4V6zm8 13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9h2v1a1 1 0 0 0 2 0V9h4v1a1 1 0 0 0 2 0V9h2v10z"/>
+                        </svg>
+                        <h3>No transactions yet</h3>
+                        <p>Start by adding your first income or expense entry!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
